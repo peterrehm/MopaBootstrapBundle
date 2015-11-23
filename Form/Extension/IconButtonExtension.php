@@ -1,6 +1,7 @@
 <?php
 namespace Mopa\Bundle\BootstrapBundle\Form\Extension;
 
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
@@ -13,7 +14,7 @@ class IconButtonExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return 'button';
+        return ButtonType::class;
     }
 
     /**

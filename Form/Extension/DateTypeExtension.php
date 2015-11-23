@@ -1,6 +1,7 @@
 <?php
 namespace Mopa\Bundle\BootstrapBundle\Form\Extension;
 
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
@@ -32,6 +33,6 @@ class DateTypeExtension extends AbstractTypeExtension
 
     public function getExtendedType()
     {
-        return 'date';
+        return DateType::class;
     }
 }
