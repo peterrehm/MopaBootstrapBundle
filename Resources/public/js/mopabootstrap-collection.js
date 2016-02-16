@@ -30,18 +30,17 @@
 
         // This must work with "collections" inside "collections", and should
         // select its children, and not the "collection" inside children.
-        var $collection = $('div' + this.options.collection_id);
-        var itemSelector = $collection.attr('data-widget-controls') === 'true'
-            ? 'div' + this.options.collection_id + ' > .controls > .collection-item'
-            : 'div' + this.options.collection_id + ' > .collection-item'
-        ;
+        var $collection = $(this.options.collection_id);
 
         // Indexes must be different for every Collection
-        if(typeof this.options.index === 'undefined') {
+        if (typeof this.options.index === 'undefined') {
             this.options.index = {};
         }
+        if (!this.options.initial_size) {
+            this.options.initial_size = $collection.children().size();
+        }
 
-        this.options.index[this.options.collection_id] = $(itemSelector).length - 1;
+        this.options.index[this.options.collection_id] = this.options.initial_size - 1;
     };
 
     Collection.prototype = {
