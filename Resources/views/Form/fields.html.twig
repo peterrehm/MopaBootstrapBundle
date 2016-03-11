@@ -183,7 +183,7 @@
 {% endspaceless %}
 {% endblock time_widget %}
 
-{% block hexcolor_widget %}
+{% block hex_color_widget %}
     {% spaceless %}
         {{ block('form_widget_simple') }}
     {% endspaceless %}
@@ -192,7 +192,7 @@
             $('#colorpicker-{{ name }}').colorpicker();
         });
         </script>
-{% endblock hexcolor_widget %}
+{% endblock hex_color_widget %}
 
 {% block datetime_widget %}
 {% spaceless %}
