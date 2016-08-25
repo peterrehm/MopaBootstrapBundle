@@ -116,6 +116,9 @@
         {{ label|trans({}, translation_domain) }}
         {% if widget_checkbox_label == 'widget' %}
             {{ block('label_asterisk') }}
+            {% if help_label_tooltip_title %}
+                <a href="#" id="{{ id }}_tooltip" title="{{ help_label_tooltip_title|trans({}, translation_domain) }}" tabindex="-1" data-toggle="tooltip" data-placement="{{ help_label_tooltip_placement }}"><i class="{{ help_label_tooltip_icon }}"></i></a>
+            {% endif %}
         {% endif %}
     {% endif %}
     {% set help_inline = false %}
