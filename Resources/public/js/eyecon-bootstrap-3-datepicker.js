@@ -129,12 +129,18 @@
         set: function() {
             var formated = DPGlobal.formatDate(this.date, this.format);
             if (!this.isInput) {
-                if (this.component){
+                if (this.component && this.element.find('input').prop('value') != formated){
                     this.element.find('input').prop('value', formated);
+                    this.element.find('input').datepicker('setValue', formated);
                 }
                 this.element.data('date', formated);
             } else {
-                this.element.prop('value', formated);
+                if (this.element.closest('.date').length != 0 && this.element.prop('value') != formated) {
+                    this.element.prop('value', formated);
+                    this.element.closest('.date').datepicker('setValue', formated);
+                } else {
+                    this.element.prop('value', formated);
+                }
             }
         },
 
@@ -145,7 +151,7 @@
                 this.date = new Date(newDate);
             }
             this.set();
-            this.viewDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1, 0, 0, 0, 0);
+            this.viewDate = new Date(this.date.getFullYear(), this.date.getMonth(), Math.min(28, this.date.getDate()), 0, 0, 0, 0);
             this.fill();
         },
 
@@ -282,17 +288,15 @@
                             var year = parseInt(target.text(), 10)||0;
                             this.viewDate.setFullYear(year);
                         }
-                        if (this.viewMode !== 0) {
-                            this.date = new Date(this.viewDate);
-                            this.element.trigger({
-                                type: 'changeDate',
-                                date: this.date,
-                                viewMode: DPGlobal.modes[this.viewMode].clsName
-                            });
-                        }
-                        this.showMode(-1);
+                        this.date = new Date(this.viewDate);
                         this.fill();
                         this.set();
+                        this.element.trigger({
+                            type: 'changeDate',
+                            date: this.date,
+                            viewMode: DPGlobal.modes[this.viewMode].clsName
+                        });
+                        this.showMode(-1);
                         break;
                     case 'td':
                         if (target.is('.day') && !target.is('.disabled')){
