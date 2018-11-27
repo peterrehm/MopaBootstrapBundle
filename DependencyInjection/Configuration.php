@@ -43,7 +43,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('templating')
-                            ->defaultValue("MopaBootstrapBundle:Form:fields.html.twig")
+                            ->defaultValue("@MopaBootstrap/Form/fields.html.twig")
                             ->end()
                         ->scalarNode('horizontal_label_class')
                             ->defaultValue("col-lg-3")
