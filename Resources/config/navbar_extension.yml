@@ -4,6 +4,7 @@ parameters:
 services:
     mopa_bootstrap.navbar_renderer:
         class: Mopa\Bundle\BootstrapBundle\Navbar\Renderer\NavbarRenderer
+        public: true
         arguments: [ '@service_container', [] ]
         tags:
             # The alias is what is used to retrieve the menu
