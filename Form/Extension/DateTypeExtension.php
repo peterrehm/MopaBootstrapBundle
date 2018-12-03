@@ -31,8 +31,8 @@ class DateTypeExtension extends AbstractTypeExtension
         $resolver->setDefined('datepicker');
     }
 
-    public function getExtendedType()
+    public static function getExtendedTypes(): iterable
     {
-        return DateType::class;
+        return [DateType::class];
     }
 }

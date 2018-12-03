@@ -27,8 +27,9 @@ class ErrorTypeFormTypeExtension extends AbstractTypeExtension
             'error_delay'=> false
        ));
     }
-    public function getExtendedType()
+
+    public static function getExtendedTypes(): iterable
     {
-        return FormType::class;
+        return [FormType::class];
     }
 }
